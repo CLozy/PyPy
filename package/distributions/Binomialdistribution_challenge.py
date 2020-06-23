@@ -1,6 +1,6 @@
 # TODO: import necessary libraries
 import math
-import matplotlib as plt
+import matplotlib.pyplot as plt
 from .Generaldistribution import Distribution
 
 # TODO: make a Binomial class that inherits from the Distribution class. Use the specifications below.
@@ -33,11 +33,13 @@ class Binomial(Distribution):
     #
 
     # TODO: define the init function
-    def ___init__(self, prob=0.5, size=20):
-        Distribution.__init__(self, self.calculate_mean(),
-                              self.calculate_stdev())
+    def __init__(self, prob=.5, size=20):
+
         self.p = prob
         self.n = size
+
+        Distribution.__init__(self, self.calculate_mean(),
+                              self.calculate_stdev())
 
         # TODO: store the probability of the distribution in an instance variable p
         # TODO: store the size of the distribution in an instance variable n
@@ -103,17 +105,14 @@ class Binomial(Distribution):
             float: the n value
 
         """
-        self.data = data_list
+
         self.n = len(self.data)
-        pos_trial = 0
-        for i in self.data:
-            if i >= 0:
-                pos_trial += 1
-        self.p = pos_trial / self.n
+
+        self.p = 1.0 * sum(self.data) / len(self.data)
         self.mean = self.calculate_mean()
         self.stdev = self.calculate_stdev()
 
-        return self.n, self.p
+        return self.p, self.n
 
     # TODO: write a method plot_bar() that outputs a bar chart of the data set according to the following specifications.
 
@@ -133,8 +132,9 @@ class Binomial(Distribution):
         plt.ylabel("Count")
 
     # TODO: Calculate the probability density function of the binomial distribution
-    def pdf(self, k)
-    """Probability density function calculator for the binomial distribution.
+
+    def pdf(self, k):
+        """Probability density function calculator for the binomial distribution.
 
         Args:
             k (float): point for calculating the probability density function
@@ -143,7 +143,8 @@ class Binomial(Distribution):
         Returns:
             float: probability density function output
         """
-    return (math.factorial(self.n)/(math.factorial(self.n-k)*math.factorial(k)))*(self.p**k)*((1-self.p)**(self.n-k))
+
+        return (math.factorial(self.n)/(math.factorial(self.n-k)*math.factorial(k)))*(self.p**k)*((1-self.p)**(self.n-k))
 
     # write a method to plot the probability density function of the binomial distribution
     def plot_pdf(self):
