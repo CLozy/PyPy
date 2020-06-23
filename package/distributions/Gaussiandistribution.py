@@ -29,9 +29,9 @@ class Gaussian(Distribution):
 
         """
 
-        avg = 1.0 * sum(self.data) / len(self.data)
+        average = 1.0 * sum(self.data) / len(self.data)
 
-        self.mean = avg
+        self.mean = average
 
         return self.mean
 
