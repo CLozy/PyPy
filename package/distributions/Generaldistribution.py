@@ -25,7 +25,7 @@ class Distribution:
 			file_name (string): name of a file to read from
 		
 		Returns:
-			None
+			None,
 		
 		"""
 			
